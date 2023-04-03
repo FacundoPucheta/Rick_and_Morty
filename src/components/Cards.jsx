@@ -1,30 +1,27 @@
 import Card from './Card';
 
 const Cards = ({characters}) => {
-
-   
-   const gallery = characters.map(char => {
-      
-      return(
-         <div>
-         <Card 
-         key={char.id}
-         name={char.name}
-         status={char.status}
-         species={char.species}
-         gender={char.gender}
-         origin={char.origin.name}
-         image={char.image}
-         onClose={() => window.alert('Emulamos que se cierra la card')}
-         />
-         </div>
-      )
-   })
-
    return (
       <div>
-         {gallery}
+         {
+            characters.map(({id, name, status, species, gender, origin, image}) => {
+               return (
+                  <Card 
+                     key={id}
+                     id={id}
+                     name={name}
+                     status={status}
+                     species={species}
+                     gender={gender}
+                     origin={origin.name}
+                     image={image}
+                     onClose={() => window.alert('Emulamos que se cierra la card')}
+                  /> 
+               )
+            })
+         }
       </div>
    )
 }
+
 export default Cards;
