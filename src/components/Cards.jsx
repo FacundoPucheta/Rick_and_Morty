@@ -1,6 +1,6 @@
 import Card from './Card';
 
-const Cards = ({characters}) => {
+const Cards = ({characters, onClose}) => {
    return (
       <div>
          {
@@ -15,7 +15,7 @@ const Cards = ({characters}) => {
                      gender={gender}
                      origin={origin.name}
                      image={image}
-                     onClose={() => window.alert('Emulamos que se cierra la card')}
+                     onClose={onClose}
                   /> 
                )
             })
