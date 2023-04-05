@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect} from 'react';
 
 // put here the const for API_KEy and URL :) => this to modify the axios call
+const URL_BASE = 'https://be-a-rym.up.railway.app/api/character';
+const API_KEY = '801572c236c6.d06f329bd8c71dd3a937';
 
 const Detail = () => {
 
@@ -10,7 +12,7 @@ const Detail = () => {
     const {id} = useParams();
 
     useEffect(() => {
-        axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+        axios(`${URL_BASE}/${id}?key=${API_KEY}`).then(({ data }) => {
            if (data.name) {
               setCharacter(data);
            } else {

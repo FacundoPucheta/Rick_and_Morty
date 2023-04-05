@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Card = ({id, name, status, species, gender, origin, onClose, image}) => {
 
-
+console.log(id);
 
    return (
       <div>
