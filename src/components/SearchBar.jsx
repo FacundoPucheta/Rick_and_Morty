@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+//podes intentar que no se agregue el character si el id ya ah sido utilizado o buscado
 const SearchBar = ({onSearch}) => {
    
    const [id, setId] = useState('');
