@@ -44,7 +44,7 @@ function App() {
       
       <div className='App'>
          
-         {location !== '/' && <Nav onSearch={onSearch} />}
+         {location !== '/' && <Nav onSearch={onSearch} />} 
          <Routes>
             <Route path='/' element={<Form/>} />
             <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
