@@ -1,9 +1,9 @@
 import './App.css';
 import Cards from './components/Cards/Cards.jsx';
 import Nav from './components/Nav/Nav';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
@@ -14,6 +14,23 @@ const URL_BASE = 'https://be-a-rym.up.railway.app/api/character';
 const API_KEY = '801572c236c6.d06f329bd8c71dd3a937';
 
 function App() {
+
+   const [access, setAccess] = useState(false);
+   const EMAIL = 'facundopucheta94@gmail.com';
+   const PASSWORD = 'Facumon94';
+   const navigate = useNavigate();
+
+   const login = (userData) => {
+      if (userData.email === EMAIL && userData.password === PASSWORD) {
+         setAccess(true);
+         navigate('/home');
+      }
+   }
+
+   useEffect(
+      () => {
+         !access && navigate('/');
+      }, [access]);
 
    const [characters, setCharacters] = useState([]);
 
@@ -46,7 +63,7 @@ function App() {
          
          {location !== '/' && <Nav onSearch={onSearch} />} 
          <Routes>
-            <Route path='/' element={<Form/>} />
+            <Route path='/' element={<Form login={login} />} />
             <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
             <Route path='/about' element={<About/>} />
             <Route path='/detail/:id' element={<Detail/>} />

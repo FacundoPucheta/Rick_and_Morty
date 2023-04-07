@@ -18,7 +18,7 @@ const validation = (name, value, errors, setErrors) => { // ESTOS PARAMETROS NO 
     if (!/\d+/.test(value)) {
         setErrors({
             ...errors,
-            password: 'Por favor, ingrese una contraseña válida '
+            password: 'Por favor, ingrese una contraseña válida, que contenga al menos un número '
         })
     } else if (value.length > 10 || value.length < 6){
         setErrors({

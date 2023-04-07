@@ -1,7 +1,7 @@
 import { useState } from "react";
 import validation from "./validation";
 
-const Form = () => {
+const Form = ({login}) => {
 
     const [userData, setUserData] = useState({
         email: '',
@@ -13,6 +13,8 @@ const Form = () => {
         password: ''
     })
 
+
+
     const handleChange = (event) => {
         
         setUserData({
@@ -23,13 +25,14 @@ const Form = () => {
         validation(event.target.name, event.target.value, errors, setErrors);
     }
 
-    const handleOnSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
+        login(userData);
     }
 
 
     return (
-        <form onSubmit={handleOnSubmit} >
+        <form onSubmit={handleSubmit} >
             {/* aca puede ir alguna imagen cuando hagas estilos para que quede piola */}
         <label htmlFor="email">EMAIL: </label>
         <input name="email" type="email" placeholder="Ingrese su email" value={userData.email} onChange={handleChange} />
@@ -38,7 +41,7 @@ const Form = () => {
         <label htmlFor="password">PASSWORD: </label>
         <input name="password" type="text" placeholder="Ingrese su contraseña" value={userData.password} onChange={handleChange} />
         {errors.password && <div>{errors.password}</div>}
-        <button>Submit</button>
+        <button onClick={handleSubmit}>Submit</button>
         </form>
     )
 }
