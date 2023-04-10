@@ -1,17 +1,14 @@
 import { useState } from "react";
-import validation from "./validation";
+import validation from "../Validation/validation";
 
 const Form = ({login}) => {
 
     const [userData, setUserData] = useState({
-        email: '',
+        email:'',
         password: ''
     });
 
-    const [errors, setErrors] = useState({
-        email:'',
-        password: ''
-    })
+    const [errors, setErrors] = useState({})
 
 
 
@@ -22,7 +19,11 @@ const Form = ({login}) => {
             [event.target.name]: event.target.value
         });
         
-        validation(event.target.name, event.target.value, errors, setErrors);
+        setErrors(validation({
+            ...userData,
+            [event.target.name]: event.target.value
+        }))
+        // validation(event.target.name, event.target.value, errors, setErrors); en caso que el estado de error tenga email y pasword creada
     }
 
     const handleSubmit = (event) => {
@@ -36,11 +37,11 @@ const Form = ({login}) => {
             {/* aca puede ir alguna imagen cuando hagas estilos para que quede piola */}
         <label htmlFor="email">EMAIL: </label>
         <input name="email" type="email" placeholder="Ingrese su email" value={userData.email} onChange={handleChange} />
-        {errors.email && <div>{errors.email}</div>}
+        {errors.email && <div style={{color: 'red'}}>{errors.email}</div>}
         <br></br>
         <label htmlFor="password">PASSWORD: </label>
         <input name="password" type="text" placeholder="Ingrese su contraseña" value={userData.password} onChange={handleChange} />
-        {errors.password && <div>{errors.password}</div>}
+        {errors.password && <div style={{color: 'red'}}>{errors.password}</div>}
         <button onClick={handleSubmit}>Submit</button>
         </form>
     )

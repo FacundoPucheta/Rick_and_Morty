@@ -1,4 +1,4 @@
-import './App.css';
+import './styles_app/App.css';
 import Cards from './components/Cards/Cards.jsx';
 import Nav from './components/Nav/Nav';
 import { useEffect, useState } from 'react';
@@ -16,12 +16,16 @@ const API_KEY = '801572c236c6.d06f329bd8c71dd3a937';
 function App() {
 
    const [access, setAccess] = useState(false);
-   const EMAIL = 'facundopucheta94@gmail.com';
-   const PASSWORD = 'Facumon94';
+   const [characters, setCharacters] = useState([]);
+
+   const email = 'facundopucheta94@gmail.com';
+   const password = 'Facumon94';
+   const location = useLocation().pathname;
    const navigate = useNavigate();
 
+
    const login = (userData) => {
-      if (userData.email === EMAIL && userData.password === PASSWORD) {
+      if (userData.email === email && userData.password === password) {
          setAccess(true);
          navigate('/home');
       }
@@ -37,7 +41,6 @@ function App() {
          !access && navigate('/');
       }, [access]);
 
-   const [characters, setCharacters] = useState([]);
 
    const onSearch = (id) => {
       axios(`${URL_BASE}/${id}?key=${API_KEY}`)
@@ -58,7 +61,6 @@ function App() {
       
    }
 
-   const location = useLocation().pathname;
    
    
    
