@@ -1,10 +1,12 @@
 import SearchBar from "../SearchBar/SearchBar";
 import { NavLink } from "react-router-dom";
 
-const Nav = ({onSearch, logout}) => {
-
-    const handleLogOut = (event) => {
-        logout();
+const Nav = ({onSearch, setCharacters, setAccess}) => {
+    
+    const handleLogOut = () => {
+        setAccess(false);
+        setCharacters([]);
+        
     }
 
     return(
@@ -22,8 +24,9 @@ const Nav = ({onSearch, logout}) => {
             <br></br>
 
             <NavLink to='/'>
-                <button onClick={handleLogOut} >Log out</button>
-            </NavLink>
+            <button onClick={handleLogOut} >LOG OUT</button>
+                </NavLink>
+            
             
         </nav>
     )

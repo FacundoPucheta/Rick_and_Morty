@@ -31,10 +31,6 @@ function App() {
       }
    }
 
-   const logout = () => {
-      setAccess(false);
-      
-   }
 
    useEffect(
       () => {
@@ -68,7 +64,7 @@ function App() {
       
       <div className='App'>
          
-         {location !== '/' && <Nav onSearch={onSearch} logout={logout} />} 
+         {location !== '/' && <Nav onSearch={onSearch} setCharacters={setCharacters} setAccess={setAccess} />} 
          <Routes>
             <Route path='/' element={<Form login={login} />} />
             <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
