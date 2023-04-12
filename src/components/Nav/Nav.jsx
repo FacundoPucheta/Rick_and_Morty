@@ -5,27 +5,31 @@ const Nav = ({onSearch, setCharacters, setAccess}) => {
     
     const handleLogOut = () => {
         setAccess(false);
-        setCharacters([]);
+        // setCharacters([]); esta linea es para que no aparezcan las cartas 
         
     }
 
     return(
         <nav>
             <SearchBar onSearch={onSearch} />
-
            
             <NavLink to='/about'>
-            <button >About</button>
-            </NavLink>
+             <button >About</button>
+                 </NavLink>
             
             <NavLink to='/home'>
-            <button >Home</button>
-            </NavLink>
+             <button >Home</button>
+                 </NavLink>
+
+            <NavLink to='/favorites'>
+             <button >Favorites</button>
+                </NavLink>
+
             <br></br>
 
             <NavLink to='/'>
-            <button onClick={handleLogOut} >LOG OUT</button>
-                </NavLink>
+                <button onClick={handleLogOut} >LOG OUT</button>
+                    </NavLink>
             
             
         </nav>
