@@ -29,10 +29,11 @@ const Detail = () => {
     
             <h1>{character?.name}</h1>
             <hr></hr>
-            <h3>STATUS -- {character?.status}</h3>
-            <h3>GENDER -- {character?.gender}</h3>
-            <h3>SPECIE -- {character?.species}</h3>
-            <h3>ORIGIN -- {character?.origin?.name}</h3>
+            <label>- STATUS -</label> <p>{character?.status}</p>
+            <label>- GENDER -</label> <p>{character?.gender}</p>
+            <label>- SPECIE -</label> <p>{character?.species}</p>
+            <label>- ORIGIN -</label> <p>{character?.origin?.name}</p>
+           
             <img src={character?.image} alt={character?.name} />
                 
         </div>

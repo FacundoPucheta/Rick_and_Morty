@@ -1,4 +1,3 @@
-// import { ADD_FAV, REMOVE_FAV } from '../../redux/actions-types';
 import { Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
@@ -58,9 +57,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      addFav: (character) => {dispatch(addFav(character))},
-      removeFav: (id) => {dispatch(removeFav(id))}
-      
+      addFav: (character) => { dispatch(addFav(character)) },
+      removeFav: (id) => { dispatch(removeFav(id)) }
    }
 }
 

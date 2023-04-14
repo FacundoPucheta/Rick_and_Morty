@@ -3,13 +3,11 @@ import validation from "../Validation/validation";
 
 const Form = ({login}) => {
 
+    const [errors, setErrors] = useState({})
     const [userData, setUserData] = useState({
         email:'',
         password: ''
     });
-
-    const [errors, setErrors] = useState({})
-
 
 
     const handleChange = (event) => {
@@ -23,7 +21,6 @@ const Form = ({login}) => {
             ...userData,
             [event.target.name]: event.target.value
         }))
-        // validation(event.target.name, event.target.value, errors, setErrors); en caso que el estado de error tenga email y pasword creada
     }
 
     const handleSubmit = (event) => {

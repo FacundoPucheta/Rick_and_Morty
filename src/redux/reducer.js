@@ -1,8 +1,8 @@
-// import { addFav, removeFav } from "./actions"
-import { ADD_FAV, REMOVE_FAV } from "./actions-types";
+import { ADD_FAV, REMOVE_FAV, FILTER, ORDER } from "./actions-types";
 
 const initialState = {
-    myFavorites: []
+    myFavorites: [],
+    allCharactersFav: []
 }
 
 const reducer = (state = initialState, {type, payload} ) => {
@@ -11,15 +11,43 @@ const reducer = (state = initialState, {type, payload} ) => {
         case ADD_FAV:
             return {
                 ...state,
-                myFavorites: [...state.myFavorites, payload]
+                myFavorites: [...state.allCharactersFav, payload],
+                allCharactersFav: [...state.allCharactersFav, payload]
             }
 
         case REMOVE_FAV:
-            let filterdFav = state.myFavorites.filter(favorito => favorito.id !== payload)
             return {
                 ...state,
-                myFavorites: filterdFav
+                myFavorites: state.myFavorites.filter(fav => fav.id !== payload)
             }
+
+        case FILTER:
+            const filterFav = state.allCharactersFav.filter(char => char.gender === payload)
+            return {
+                ...state,
+                myFavorites: 
+                    payload === 'allCharacters'
+                    ? [...state.allCharactersFav]
+                    : filterFav
+            }
+        
+        case ORDER:
+            const copyAllCharacters = [...state.allCharactersFav];
+            // if(payload === 'A') {
+            //     copyAllCharacters.sort((a, b) => a - b);
+            // }
+            // if (payload === 'D') {
+            //     copyAllCharacters.sort((a, b) => b - a);
+            // }
+
+             return {
+                ...state,
+                myFavorites: 
+                    payload === 'A'
+                    ? copyAllCharacters.sort((a, b) => a.id - b.id)  // id from each character we want to order !
+                    : copyAllCharacters.sort((a, b) => b.id - a.id)  // id from each character we want to order !
+
+             }
 
         default:
             return {...state}
