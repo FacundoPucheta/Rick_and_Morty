@@ -13,13 +13,5 @@ export const filterCards = (gender) => {
 };
 
 export const orderCards = (order) => {
-    return {ORDER, payload: order}
+    return {type: ORDER, payload: order}
 };
-
-// export const getCharacters = () => {
-//     return function(dispatch) {
-//         fetch(asiuaseinaseonasoenoaseoasieoiashtoiasjroasoirjaosirjoirs) // aca va la url
-//         .then(response => response.json())
-//         .then(data => dispatch({type:GET_CHARACTERS, payload: data.results}))
-//     }
-// }
