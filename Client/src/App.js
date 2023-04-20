@@ -39,7 +39,8 @@ function App() {
 
 
       function onSearch(id) {          
-         axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
+         axios(`http://localhost:3001/rickandmorty/character/${id}`)
+         .then(({ data }) => {
             if (data.name) {
                let exist = characters.find((ch) => ch.id === data.id)
                if (exist) {
