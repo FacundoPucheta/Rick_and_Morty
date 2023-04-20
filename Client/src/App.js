@@ -51,7 +51,12 @@ function App() {
             } else {
                window.alert('¡No hay personajes con este ID!');
             }
+         })
+         .catch((error) => {
+            console.log('Error: ', error);
+            window.alert('Se ah producido un ERROR !');
          });
+            
       }
 
       const onClose = (id) => {
