@@ -53,12 +53,12 @@ function App() {
          });
       }
 
-   const onClose = (id) => {
+      const onClose = (id) => {
 
       const charactersFilter = characters.filter(character => character.id !== id)
       setCharacters(charactersFilter)
       
-   }
+      }
 
    
    
