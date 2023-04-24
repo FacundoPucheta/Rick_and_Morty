@@ -11,16 +11,16 @@ const reducer = (state = initialState, {type, payload} ) => {
         case ADD_FAV:
             return {
                 ...state,
-                myFavorites: [...state.allCharactersFav, payload],
-                allCharactersFav: [...state.allCharactersFav, payload]
-            }
+                myFavorites: payload,
+                allCharactersFav: payload
+            };
 
-        case REMOVE_FAV: // acá modifique que se remueva tambien de ambos estados, evitando que queden en el cache una vez sacados de fav
+        case REMOVE_FAV: 
             return {
                 ...state,
-                myFavorites: state.myFavorites.filter(fav => fav.id !== payload),
-                allCharactersFav: state.allCharactersFav.filter(fav => fav.id !== payload)
-            }
+                myFavorites: payload,
+                allCharactersFav: payload
+            };
 
         case FILTER: 
 
@@ -31,7 +31,7 @@ const reducer = (state = initialState, {type, payload} ) => {
                     payload === 'allCharacters'
                     ? [...state.allCharactersFav]
                     : filterFav
-            }
+            };
         
         case ORDER:
             const copyAllCharacters = [...state.allCharactersFav];
@@ -42,7 +42,7 @@ const reducer = (state = initialState, {type, payload} ) => {
                    ? copyAllCharacters.sort((a, b) => a.id - b.id)  // id from each character we want to order !
                    : copyAllCharacters.sort((a, b) => b.id - a.id)  // id from each character we want to order !
 
-            }
+            };
 
         default:
             return {...state}
