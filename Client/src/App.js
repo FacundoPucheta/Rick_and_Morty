@@ -13,6 +13,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 // const API_KEY = '801572c236c6.d06f329bd8c71dd3a937';
 // const email = 'facu94@gmail.com';
 // const password = 'Facumon94';
+const URL = 'http://localhost:3001/rickandmorty/login';
 
 function App() {
 
@@ -22,23 +23,20 @@ function App() {
    const location = useLocation().pathname;
    const navigate = useNavigate();
 
-   const login = (userData) => {
-      const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login';
-      axios(URL + `?email=${email}&password=${password}`)
-      .then(({ data }) => {
+   const login = async (userData) => {
+      try {
+         const { email, password } = userData;
+         const { data } = await axios(URL + `?email=${email}&password=${password}`)
          const { access } = data;
+         
          setAccess(access);
          access && navigate('/home');
-      });
+         
+         
+      } catch (error) {
+         console.log(error.message)
+      }
    }
-   // const login = (userData) => {
-   //    if (userData.email === email && userData.password === password) {
-   //       setAccess(true);
-   //       navigate('/home');
-   //    }
-   // }
-
 
    useEffect(
       () => {
@@ -46,26 +44,24 @@ function App() {
       }, [access, navigate]);
 
 
-      function onSearch(id) {          
-         axios(`http://localhost:3001/rickandmorty/character/${id}`)
-         .then(({ data }) => {
-            if (data.name) {
-               let exist = characters.find((ch) => ch.id === data.id)
-               if (exist) {
-                  alert("Ya existe el personaje")
-               } else {
-                  setCharacters((oldChars) => [...oldChars, data]);
-               }
-            } else {
-               window.alert('¡No hay personajes con este ID!');
-            }
-         })
-         .catch((error) => {
-            console.log('Error: ', error);
-            window.alert('Se ah producido un ERROR !');
-         });
+   const onSearch = async (id) => {
+      try {
+      const {data} = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
            
+      if (data.name) {
+         let exist = characters.find((ch) => ch.id === data.id)
+         if (exist) {
+            alert("Ya existe el personaje")
+         } else {
+            setCharacters((oldChars) => [...oldChars, data]);
+         }
       }
+         
+      } catch (error) {
+         alert('¡No hay personajes con este ID!');
+      }   
+
+   }
 
       const onClose = (id) => {
 
