@@ -41,6 +41,8 @@ const Form = ({login}) => {
         <input name="password" type="text" placeholder="Ingrese su contraseña" value={userData.password} onChange={handleChange} />
         {errors.password && <div style={{color: 'red'}}>{errors.password}</div>}
         <button onClick={handleSubmit}>Submit</button>
+
+        <h2 style={{color: '#ffc83d', borderTop: '2px solid black', padding: '0.5em 1.5em',}}> - Solo falta agregarle Estilos -  😁</h2>
         </form>
     )
 }
