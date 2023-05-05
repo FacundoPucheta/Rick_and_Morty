@@ -28,8 +28,6 @@ const getCharById = async (req, res) => {
         : res.status(500).send(error.response.data.error);
     }
 
-
-
-}
+};
 
 module.exports = {getCharById};

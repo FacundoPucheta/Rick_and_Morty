@@ -23,7 +23,7 @@ const deleteFav = (req, res) => {
     myFavorites = myFavorites.filter((favorite) => favorite.id !== +id);
 
     return res.status(200).json(myFavorites);
-}
+};
 
 module.exports = {
     postFav,

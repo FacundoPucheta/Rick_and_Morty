@@ -4,10 +4,8 @@ import { useState, useEffect } from 'react';
 import { addFav, removeFav } from '../../redux/actions';
 
 
-
 const Card = ({id, name, species, gender, onClose, image, addFav, removeFav, myFavorites}) => {
 
-   
    const [isFav, setIsFav] = useState(false);
 
    const handleFavorite = () => {
