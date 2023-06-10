@@ -1,0 +1,28 @@
+@mixin btn-default{
+    font: bold;
+    color: aquamarine;
+    background-color: black;
+    padding: 0.5em 1.5em;
+    border-radius: 8px;
+    border: solid 2px transparent;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    margin-left: 0.7em
+}
+
+
+.btnAdd {
+
+    @include btn-default;
+
+    &:hover {
+        background-color: brown;
+        color: white;
+    }
+    &:active {
+        background-color: yellowgreen;
+        color: slateblue;
+        font-size: small;
+        font-weight: bold;
+    }  
+}

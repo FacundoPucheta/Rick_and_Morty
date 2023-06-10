@@ -1,0 +1,84 @@
+@import "../SearchBar/SearchBar.module.scss";
+
+$text-shadowBlack: 3px 3px 2px #000;
+
+.formBackG {
+    background-image: url(./landing\ page.png);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+};
+
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: transparent;
+    align-items: center;
+    padding: 2em;
+    padding-bottom: 3em;
+    margin-top: -60px;
+    border: 2px solid black;
+    border-radius: 2em;
+    
+
+    button {
+        height: 3rem;
+        width: 7rem;
+        margin-left:2rem;
+        
+    }
+     min-height: 200px;
+     min-width: 550px;
+    
+};
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: rgb(255, 255, 255);
+    text-shadow: $text-shadowBlack;
+    border-radius: 33px;
+    
+label {
+        text-shadow: $text-shadowBlack;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        color: rgb(255, 224, 167);
+    }
+
+    input {
+        border-radius: 999rem;
+        background-color: #3d27cd9a;
+        min-width: 300px;
+        font-weight: bold
+    }
+
+};
+
+.submitBtn {
+
+    @include btn-default;
+
+    &:hover {
+        background-color: #ffda89;
+        color: rgb(0, 0, 0);
+        font-weight: lighter;
+        border-color: black;
+    }
+
+    &:active {
+        background-color: deeppink;
+        color: rgb(255, 255, 255);
+        font-weight: bolder
+    }
+
+}
+
+;

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import validation from "../Validation/validation";
+import styles from "./Form.module.css";
+
 
 const Form = ({login}) => {
 
@@ -31,19 +33,25 @@ const Form = ({login}) => {
 
 
     return (
+        <div className={styles.formBackG} >
         <form onSubmit={handleSubmit} >
-            {/* aca puede ir alguna imagen cuando hagas estilos para que quede piola */}
+        <div className={styles.mainContainer}>
+        <div className={styles.container}>
         <label htmlFor="email">EMAIL: </label>
         <input name="email" type="email" placeholder="Ingrese su email" value={userData.email} onChange={handleChange} />
-        {errors.email && <div style={{color: 'red'}}>{errors.email}</div>}
+        {errors.email ? <div >{errors.email}</div> : <div>{" - "}</div> }
         <br></br>
         <label htmlFor="password">PASSWORD: </label>
         <input name="password" type="text" placeholder="Ingrese su contraseña" value={userData.password} onChange={handleChange} />
-        {errors.password && <div style={{color: 'red'}}>{errors.password}</div>}
-        <button onClick={handleSubmit}>Submit</button>
-
-        <h2 style={{color: '#ffc83d', borderTop: '2px solid black', padding: '0.5em 1.5em',}}> - Solo falta agregarle Estilos -  😁</h2>
+        {errors.password ? <div >{errors.password}</div> : <div>{" - "}</div>}
+        </div>
+        <div>
+        <button className={styles.submitBtn} onClick={handleSubmit}>Submit</button>
+        </div>
+        </div>
+        <h2> - Solo falta agregarle Estilos -  😁</h2>
         </form>
+        </div>
     )
 }
 

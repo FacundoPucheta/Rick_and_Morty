@@ -10,12 +10,8 @@ router.get('/character/:id',(req, res)=> {
 
 router.get('/login', login);
 
-router.post('/fav', (req, res)=> {
-    postFav(req, res);
-});
+router.post('/fav', postFav);
 
-router.delete('/fav/:id', (req, res)=> {
-    deleteFav(req, res)
-});
+router.delete('/fav/:id', deleteFav);
 
 module.exports = router;

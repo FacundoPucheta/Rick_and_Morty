@@ -1,0 +1,21 @@
+.btnAdd {
+  font: bold;
+  color: aquamarine;
+  background-color: black;
+  padding: 0.5em 1.5em;
+  border-radius: 8px;
+  border: solid 2px transparent;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  margin-left: 0.7em;
+}
+.btnAdd:hover {
+  background-color: brown;
+  color: white;
+}
+.btnAdd:active {
+  background-color: yellowgreen;
+  color: slateblue;
+  font-size: small;
+  font-weight: bold;
+}/*# sourceMappingURL=SearchBar.module.css.map */
