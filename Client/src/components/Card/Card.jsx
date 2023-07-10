@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { addFav, removeFav } from '../../redux/actions';
-
+import styles from "./Card.module.css";
 
 const Card = ({id, name, species, gender, onClose, image, addFav, removeFav, myFavorites}) => {
 
@@ -30,18 +30,19 @@ const Card = ({id, name, species, gender, onClose, image, addFav, removeFav, myF
    const checkLocation = useLocation().pathname;
 
    return (
-      <div>
+      <div className={styles.card}>
          
          <button onClick={handleFavorite}>{isFav ? '❤️' : '🤍' }</button>
          {checkLocation !== '/favorites' && <button onClick={() => onClose(id)}>X</button>}
          
-         <Link to={`/detail/${id}`} >
+         <Link  to={`/detail/${id}`} >
             <h2>{name}</h2>
          </Link>
          <h2>{gender}</h2>
          <h2>{species}</h2>
-
-         <img style={{borderRadius: '999999rem'}} src={image} alt='' />
+         <div className={styles.imgCont}>
+         <img src={image} alt={name} />
+         </div>
 
       </div>
    );
